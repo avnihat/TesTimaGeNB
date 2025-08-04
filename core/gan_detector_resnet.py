@@ -2,9 +2,15 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
-model = load_model("models/gan_detector_resnet.h5")
+try:
+    model = load_model("models/gan_detector_resnet.h5")
+except Exception as e:
+    model = None
+    print("❌ GAN modeli yüklenemedi:", e)
 
 def analyze_gan_resnet(image_path):
+    if model is None:
+        return "Model yüklenemedi"
     img = image.load_img(image_path, target_size=(128, 128))
     img_array = image.img_to_array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
