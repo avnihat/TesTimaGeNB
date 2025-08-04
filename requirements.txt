@@ -1,0 +1,9 @@
+PyQt5
+opencv-python
+Pillow
+imagehash
+qrcode
+reportlab
+tensorflow
+keras
+exifread
