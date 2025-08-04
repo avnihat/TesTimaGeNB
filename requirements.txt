@@ -1,9 +1,2 @@
-PyQt5
+py2app
 opencv-python
-Pillow
-imagehash
-qrcode
-reportlab
-tensorflow
-keras
-exifread
