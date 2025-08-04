@@ -1,16 +1,26 @@
-from setuptools import setup
-
-APP = ['main.py']
-OPTIONS = {
-    'argv_emulation': True,
-    'iconfile': 'assets/logo.icns',
-    'packages': ['PyQt5', 'cv2', 'PIL', 'imagehash', 'qrcode', 'reportlab', 'tensorflow', 'keras']
-}
+from setuptools import setup, find_packages
 
 setup(
-    app=APP,
     name='TesTimaGeNB',
-    data_files=[],
-    options={'py2app': OPTIONS},
-    setup_requires=['py2app'],
+    version='1.0.0',
+    description='Görsellerin gerçeklik analizini yapan adli yazılım',
+    author='Senin Adın',
+    packages=find_packages(),
+    install_requires=[
+        'PyQt5',
+        'opencv-python',
+        'Pillow',
+        'imagehash',
+        'qrcode',
+        'reportlab',
+        'tensorflow',
+        'keras',
+        'exifread'
+    ],
+    entry_points={
+        'console_scripts': [
+            'testimagenb = main:main'
+        ]
+    },
+    include_package_data=True,
 )
