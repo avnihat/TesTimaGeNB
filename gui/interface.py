@@ -14,7 +14,7 @@ from core.exif_reader import extract_exif_metadata
 from core.hash_utils import generate_image_hashes
 from core.face_detector import detect_faces
 from core.gps_checker import analyze_gps_location
-from core.resnet_gan_model import analyze_gan_resnet
+from core.gan_detector_resnet import analyze_gan_resnet
 from core.report_generator import generate_pdf_report
 
 class TesTimaGeNBWindow(QWidget):
