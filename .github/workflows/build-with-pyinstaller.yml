@@ -1,4 +1,4 @@
-name: Build MacOS App with PyInstaller
+name: Build MacOS App with PyInstaller and Create DMG
 
 on:
   workflow_dispatch:
@@ -22,12 +22,32 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
 
-    - name: PyInstaller ile .app derle
+    - name: PyInstaller ile .app üret
       run: |
         pyinstaller TesTimaGeNB.spec
+
+    - name: create-dmg ile .dmg dosyası üret
+      run: |
+        brew install create-dmg
+        create-dmg \
+          --volname "TesTimaGeNB" \
+          --volicon "assets/logo.icns" \
+          --background "assets/background.png" \
+          --window-pos 200 120 \
+          --window-size 600 400 \
+          --icon-size 100 \
+          --app-drop-link 480 200 \
+          "TesTimaGeNB.dmg" \
+          "dist/TesTimaGeNB"
 
     - name: .app dosyasını indirilebilir yap
       uses: actions/upload-artifact@v4
       with:
-        name: TesTimaGeNB-macOS-pyinstaller-app
+        name: TesTimaGeNB-app
         path: dist/TesTimaGeNB
+
+    - name: .dmg dosyasını indirilebilir yap
+      uses: actions/upload-artifact@v4
+      with:
+        name: TesTimaGeNB-installer-dmg
+        path: TesTimaGeNB.dmg
