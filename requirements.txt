@@ -1,2 +1,8 @@
 py2app
 opencv-python
+PyQt5
+numpy
+Pillow
+imagehash
+exifread
+tensorflow
