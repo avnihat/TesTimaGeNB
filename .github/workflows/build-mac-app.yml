@@ -26,8 +26,8 @@ jobs:
       run: |
         python setup.py py2app
 
-    - name: .app dosyasını artefact olarak yükle
-      uses: actions/upload-artifact@v3
+    - name: .app dosyasını indirilebilir yap
+      uses: actions/upload-artifact@v4
       with:
         name: TesTimaGeNB-macOS-app
         path: dist/*.app
