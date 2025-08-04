@@ -1,26 +1,16 @@
 from setuptools import setup
 
-APP = ['main.py']
+APP = ['main.py']  # Uygulamanın giriş noktası
+DATA_FILES = []    # Dahil etmek istediğin ekstra dosyalar varsa buraya ekle
 OPTIONS = {
     'argv_emulation': True,
-    'iconfile': 'assets/logo.icns',
-    'packages': [
-        'PyQt5',
-        'opencv-python',
-        'Pillow',
-        'imagehash',
-        'qrcode',
-        'reportlab',
-        'tensorflow',
-        'keras',
-        'exifread'
-    ]
+    'packages': ['cv2'],  # opencv-python modülü
+    'iconfile': None      # Eğer .icns simgen varsa burada tanımlayabilirsin
 }
 
 setup(
     app=APP,
-    name='TesTimaGeNB',
-    data_files=[('assets', ['assets/logo.icns', 'assets/watermark.png'])],
+    data_files=DATA_FILES,
     options={'py2app': OPTIONS},
     setup_requires=['py2app'],
 )
