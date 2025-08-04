@@ -1,10 +1,10 @@
-name: Build MacOS App with PyInstaller and Create DMG
+name: Build Intel Mac App (.app + .dmg)
 
 on:
   workflow_dispatch:
 
 jobs:
-  build-macos:
+  build-intel-macos:
     runs-on: macos-latest
 
     steps:
@@ -22,9 +22,9 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
 
-    - name: PyInstaller ile .app üret
+    - name: Intel Mac için PyInstaller çalıştır
       run: |
-        pyinstaller TesTimaGeNB.spec
+        arch -x86_64 pyinstaller TesTimaGeNB.spec
 
     - name: create-dmg ile .dmg dosyası üret
       run: |
@@ -49,5 +49,5 @@ jobs:
     - name: .dmg dosyasını indirilebilir yap
       uses: actions/upload-artifact@v4
       with:
-        name: TesTimaGeNB-installer-dmg
+        name: TesTimaGeNB-intel-mac-dmg
         path: TesTimaGeNB.dmg
